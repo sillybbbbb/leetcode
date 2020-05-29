@@ -66,11 +66,36 @@ class Codec:
                 Q.put(root.right)
             else:
                 s.append('null')
-        
+        i = len(s)-1
+        while s[i] == 'null':
+            s.pop()
+            i-=1
+
+        return s
 
     def deserializeBFS(self, data):
+        data = data[1:-1].split(',')
         if data[0] == "null":
             return None
+        Q = queue.Queue()
+        root = TreeNode(data[0])
+        Q.put(root)
+        i = 1
+        while not Q.empty():
+            cur = Q.get()
+            
+                
+            if cur:
+               
+
+                cur.left = TreeNode(data[i]) if (i<len(data) and  data[i] != 'null') else None
+                cur.right = TreeNode(data[i+1]) if (i+1<len(data) and data[i+1] != 'null') else None
+            else:
+                continue
+            i+=2
+            Q.put(cur.left)
+            Q.put(cur.right)
+        return root        
         
         
         
@@ -78,6 +103,7 @@ class Codec:
 
 
 f = Codec()
-dk = f.deserialize("[1,2,3,null,null,4,5,6,null,7]")
-ek = f.serialize(dk)
+dk = f.deserializeBFS("[1,2,3,null,null,4,5,6,null,7]")
+
+ek = f.serializeBFS(dk)
 print(ek)
