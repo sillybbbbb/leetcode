@@ -28,3 +28,26 @@ exention -> exection (将 'n' 替换为 'c')
 exection -> execution (插入 'u')
 
 '''
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        l1 = len(word1)
+        l2 = len(word2)
+        dp = [[None]*(l2+1) for i in range(l1+1)]
+        for i in range(l1+1):
+            dp[i][0] = i
+        for i in range(l2+1):
+            dp[0][i] = i
+        # if word1 == "":
+        #     return len(word2)
+        # elif word2 == "":
+        #     return len(word1)
+        #dp[0][0] = 0 if word1[0] == word2[0] else 1
+        for i in range(1,l1+1):
+            for j in range(1,l2+1):
+                s1 = dp[i-1][j-1] if word1[i-1] ==word2[j-1] else dp[i-1][j-1]+1
+                s2 = dp[i-1][j] + 1
+                s3 = dp[i][j-1] + 1
+                dp[i][j] = min(s1,s2,s3)
+        return dp[l1][l2]
+s = Solution()
+print(s.minDistance('horse','ros'))
