@@ -1,6 +1,6 @@
 class TreeNode:
     def __init__(self, x):
-        self.val = x
+        self.val = int(x)
         self.left = None
         self.right = None
 import queue
@@ -102,8 +102,8 @@ class Codec:
 
 
 
-f = Codec()
-dk = f.deserializeBFS("[1,2,3,null,null,4,5,6,null,7]")
+# f = Codec()
+# dk = f.deserializeBFS("[1,2,3,null,null,4,5,6,null,7]")
 
-ek = f.serializeBFS(dk)
-print(ek)
+# ek = f.serializeBFS(dk)
+# print(ek)
