@@ -10,6 +10,37 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
-        }
+        },
+        {
+            "name": "(gdb) Bash on Windows Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/leetcode",
+            "args": [],
+            "stopAtEntry": false,
+            "miDebuggerArgs": "",
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "preLaunchTask": "build-debug",
+            "externalConsole": false,
+            // "sourceFileMap": {
+            //     "/mnt/d/Project1/src/": "${workspaceFolder}",},
+            "pipeTransport": {
+                "debuggerPath": "/usr/bin/gdb",
+                // "pipeProgram": "C:\\Windows\\System32\\bash.exe",
+                "pipeProgram": "/mnt/c/windows/system32/bash.exe",
+                "pipeArgs": [
+                    "-c"
+                ],
+                "pipeCwd": ""
+            },
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
     ]
 }
